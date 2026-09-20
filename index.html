@@ -1,0 +1,916 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A&L Printing | Custom 3D Prints</title>
+
+    <meta name="description"
+        content="A&L Printing - custom 3D printing, fun prints, desk accessories and more.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0b10;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #252532;
+            padding: 16px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #8b5cf6;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #ddd;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: #a78bfa;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 88vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            background:
+                radial-gradient(circle at 50% 20%, #32165f 0%, transparent 35%),
+                #0b0b10;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border: 1px solid #6d28d9;
+            border-radius: 999px;
+            color: #c4b5fd;
+            background: rgba(109, 40, 217, 0.12);
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            font-size: clamp(50px, 9vw, 100px);
+            line-height: 0.95;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #8b5cf6;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #b8b8c5;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .buttons {
+            margin-top: 35px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .primary {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #7c3aed;
+            transform: translateY(-2px);
+        }
+
+        .secondary {
+            border: 1px solid #3a3a48;
+            color: white;
+            background: #15151d;
+        }
+
+        .secondary:hover {
+            background: #20202a;
+        }
+
+        /* GENERAL */
+
+        section {
+            padding: 90px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #9999a8;
+        }
+
+        /* PRODUCTS */
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 22px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .card {
+            background: #14141c;
+            border: 1px solid #282832;
+            border-radius: 18px;
+            overflow: hidden;
+            transition: 0.25s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: #7c3aed;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .card-image {
+            height: 190px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background:
+                linear-gradient(135deg, #201538, #111118);
+            font-size: 65px;
+        }
+
+        .card-content {
+            padding: 22px;
+        }
+
+        .card h3 {
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #9999a8;
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            color: #a78bfa;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* CUSTOM */
+
+        .custom {
+            background: #111118;
+        }
+
+        .custom-box {
+            max-width: 1000px;
+            margin: auto;
+            border: 1px solid #32264a;
+            background: linear-gradient(135deg, #18121f, #101016);
+            padding: 50px;
+            border-radius: 25px;
+            text-align: center;
+        }
+
+        .custom-box h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .custom-box p {
+            color: #aaa;
+            max-width: 650px;
+            margin: 0 auto 25px;
+        }
+
+        /* HOW IT WORKS */
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .step {
+            background: #14141c;
+            border: 1px solid #282832;
+            padding: 30px;
+            border-radius: 18px;
+            text-align: center;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            margin: auto auto 15px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #8b5cf6;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .step p {
+            color: #9999a8;
+            margin-top: 8px;
+        }
+
+        /* PRICING */
+
+        .pricing {
+            max-width: 850px;
+            margin: auto;
+            background: #14141c;
+            border: 1px solid #282832;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .pricing-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px 25px;
+            border-bottom: 1px solid #282832;
+        }
+
+        .pricing-row:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-row span:last-child {
+            color: #a78bfa;
+            font-weight: bold;
+        }
+
+        .small-note {
+            text-align: center;
+            color: #777783;
+            margin-top: 18px;
+            font-size: 14px;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            background: #0e0e14;
+        }
+
+        .form-container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+        }
+
+        .form-container iframe {
+            width: 100%;
+            min-height: 850px;
+            border: none;
+        }
+
+        .form-fallback {
+            text-align: center;
+            padding: 20px;
+            color: #aaa;
+        }
+
+        /* FAQ */
+
+        .faq {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        details {
+            background: #14141c;
+            border: 1px solid #282832;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        details p {
+            color: #9999a8;
+            margin-top: 12px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid #252532;
+            padding: 40px 7%;
+            text-align: center;
+            color: #777783;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 55px;
+            }
+
+            .custom-box {
+                padding: 30px 20px;
+            }
+
+            .pricing-row {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="logo">A<span>&</span>L Printing</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#prints">Prints</a></li>
+            <li><a href="#custom">Custom</a></li>
+            <li><a href="#how">How it works</a></li>
+            <li><a href="#contact">Order</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                🖨️ Custom 3D Printing
+            </div>
+
+            <h1>
+                A&L <span>Printing</span>
+            </h1>
+
+            <p>
+                Cool, useful and completely custom 3D prints made to order.
+                From desk toys and gadgets to your own ideas.
+            </p>
+
+            <div class="buttons">
+                <a class="button primary" href="#contact">
+                    Start an Order
+                </a>
+
+                <a class="button secondary" href="#prints">
+                    View Prints
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- POPULAR PRINTS -->
+
+    <section id="prints">
+
+        <div class="section-title">
+            <h2>Popular Prints</h2>
+            <p>Some of the stuff you can order from A&L Printing.</p>
+        </div>
+
+        <div class="products">
+
+            <div class="card">
+                <div class="card-image">🎮</div>
+
+                <div class="card-content">
+                    <h3>Mini Gear Shifter</h3>
+
+                    <p>
+                        A tiny desk-sized gear shifter toy.
+                        Great for gaming setups and car fans.
+                    </p>
+
+                    <div class="price">
+                        From $5 NZD
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="card-image">🐙</div>
+
+                <div class="card-content">
+                    <h3>Octopus</h3>
+
+                    <p>
+                        Flexible articulated octopus prints
+                        in different colours.
+                    </p>
+
+                    <div class="price">
+                        From $5 NZD
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="card-image">🪨</div>
+
+                <div class="card-content">
+                    <h3>Rock Octopus</h3>
+
+                    <p>
+                        A goofy rock-inspired octopus desk buddy.
+                    </p>
+
+                    <div class="price">
+                        From $6 NZD
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="card-image">🔑</div>
+
+                <div class="card-content">
+                    <h3>Keychains</h3>
+
+                    <p>
+                        Names, logos, initials, symbols and
+                        custom designs.
+                    </p>
+
+                    <div class="price">
+                        From $3 NZD
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="card-image">🧩</div>
+
+                <div class="card-content">
+                    <h3>Desk Toys</h3>
+
+                    <p>
+                        Fidget toys, articulated animals,
+                        puzzles and random little gadgets.
+                    </p>
+
+                    <div class="price">
+                        From $4 NZD
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="card-image">🛠️</div>
+
+                <div class="card-content">
+                    <h3>Useful Stuff</h3>
+
+                    <p>
+                        Cable clips, stands, holders,
+                        organisers and other useful prints.
+                    </p>
+
+                    <div class="price">
+                        From $4 NZD
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CUSTOM PRINTING -->
+
+    <section class="custom" id="custom">
+
+        <div class="custom-box">
+
+            <h2>Have your own idea?</h2>
+
+            <p>
+                We can make custom 3D prints too!
+                Tell us what you want, send a reference image or
+                describe your idea and we'll see what we can make.
+            </p>
+
+            <a class="button primary" href="#contact">
+                Request a Custom Print
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- HOW IT WORKS -->
+
+    <section id="how">
+
+        <div class="section-title">
+
+            <h2>How It Works</h2>
+
+            <p>
+                Ordering a print is simple.
+            </p>
+
+        </div>
+
+
+        <div class="steps">
+
+            <div class="step">
+
+                <div class="step-number">1</div>
+
+                <h3>Tell us</h3>
+
+                <p>
+                    Fill out the order form and tell us
+                    what you'd like printed.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">2</div>
+
+                <h3>We check it</h3>
+
+                <p>
+                    We'll look at your idea and work out
+                    the size, material and price.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">3</div>
+
+                <h3>We print it</h3>
+
+                <p>
+                    Once everything is agreed on,
+                    we'll print your item.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">4</div>
+
+                <h3>Get your print</h3>
+
+                <p>
+                    We'll arrange pickup or another
+                    suitable way to get your order to you.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRICING -->
+
+    <section>
+
+        <div class="section-title">
+
+            <h2>Pricing</h2>
+
+            <p>
+                Example starting prices — custom orders may vary.
+            </p>
+
+        </div>
+
+
+        <div class="pricing">
+
+            <div class="pricing-row">
+                <span>Small prints</span>
+                <span>From $3</span>
+            </div>
+
+            <div class="pricing-row">
+                <span>Desk toys</span>
+                <span>From $5</span>
+            </div>
+
+            <div class="pricing-row">
+                <span>Keychains</span>
+                <span>From $3</span>
+            </div>
+
+            <div class="pricing-row">
+                <span>Medium prints</span>
+                <span>From $10</span>
+            </div>
+
+            <div class="pricing-row">
+                <span>Large prints</span>
+                <span>Quote required</span>
+            </div>
+
+            <div class="pricing-row">
+                <span>Custom designs</span>
+                <span>Quote required</span>
+            </div>
+
+        </div>
+
+        <p class="small-note">
+            Final pricing depends on size, filament used,
+            print time and design complexity.
+        </p>
+
+    </section>
+
+
+    <!-- CONTACT / GOOGLE FORM -->
+
+    <section class="contact" id="contact">
+
+        <div class="section-title">
+
+            <h2>Place an Order</h2>
+
+            <p>
+                Tell us what you want printed using the form below.
+            </p>
+
+        </div>
+
+
+        <div class="form-container">
+
+            <iframe
+                src="https://docs.google.com/forms/d/e/1FAIpQLSdtFmf4tmb88Z1xgQveSRhfQJS_JFdD9J1NqAzxyrKOieyx4A/viewform?embedded=true">
+                Loading…
+            </iframe>
+
+        </div>
+
+        <div class="form-fallback">
+
+            If the form doesn't load,
+            <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdtFmf4tmb88Z1xgQveSRhfQJS_JFdD9J1NqAzxyrKOieyx4A/viewform?usp=dialog"
+                target="_blank"
+                style="color:#a78bfa;">
+                open the order form here
+            </a>.
+
+        </div>
+
+    </section>
+
+
+    <!-- FAQ -->
+
+    <section>
+
+        <div class="section-title">
+
+            <h2>FAQ</h2>
+
+            <p>Things you might want to know.</p>
+
+        </div>
+
+
+        <div class="faq">
+
+            <details>
+
+                <summary>
+                    Can I request something that isn't listed?
+                </summary>
+
+                <p>
+                    Yes! Custom requests are welcome. Send us
+                    your idea through the order form.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Can I choose the colour?
+                </summary>
+
+                <p>
+                    Usually, yes. Available colours depend on
+                    the filament we have at the time.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Can I choose the size?
+                </summary>
+
+                <p>
+                    For many prints we can change the size.
+                    Larger prints may cost more because they
+                    use more material and take longer.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    How long does a print take?
+                </summary>
+
+                <p>
+                    It depends on the model and size.
+                    We'll let you know an estimated print time
+                    before confirming the order.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Do you sell finished prints?
+                </summary>
+
+                <p>
+                    Yes! Check the popular prints section,
+                    or request something custom.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    What if I have an STL file?
+                </summary>
+
+                <p>
+                    Send the details through the order form.
+                    We can check whether the model is suitable
+                    for printing.
+                </p>
+
+            </details>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            <strong>A&L Printing</strong>
+        </p>
+
+        <p>
+            Custom 3D printing • Desk toys • Useful prints • Custom designs
+        </p>
+
+        <p style="margin-top:12px;">
+            © 2026 A&L Printing. All rights reserved.
+        </p>
+
+    </footer>
+
+
+</body>
+</html>
+```
